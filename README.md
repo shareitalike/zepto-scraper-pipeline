@@ -1,79 +1,118 @@
-# Zepto Scraper & Dashboard
+# 🛒 Zepto Scraper & Data Pipeline
 
-A professional, asynchronous web scraper for Zepto (grocery delivery) with a real-time analytics dashboard. Built with Python, Playwright, Supabase, and Streamlit.
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![Status](https://img.shields.io/badge/status-active-success.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Domain](https://img.shields.io/badge/domain-Data%20Engineering-purple.svg)
 
-## Features
+> **Production‑style data pipeline to scrape, validate, and store Zepto product & pricing data for analytics.**  
+> Designed with interview‑ready architecture, failure handling, and scalability in mind.
 
-- **High-Performance Scraping**: Async architecture using `playwright` for fast, parallel data extraction.
-- **Intelligent Location Handling**: Automatically handles location selection and pincode inputs.
-- **Robustness**: Handles anti-bot measures, network interception for RSC (React Server Components), and DOM fallbacks.
-- **Data Pipeline**: 
-    - Extracts products, prices, inventory, and delivery ETAs.
-    - Saves data to CSV and automatically uploads to Supabase.
-- **Analytics Dashboard**: Streamlit-based dashboard to visualize pricing trends, availability, and assortment gaps.
+---
 
-## Project Structure
+## 🚀 Why this project matters
+
+This project demonstrates **real‑world data engineering skills**, not just scraping:
+- **Resilient Ingestion:** Async architecture using `playwright` for fast, parallel data extraction.
+- **Reliability:** Handles anti-bot measures, network interception for RSC (React Server Components), and DOM fallbacks.
+- **Analytics Ready:** Extracts products, prices, inventory, and delivery ETAs, normalizing them for downstream BI.
+- **Dashboarding:** Integrated Streamlit dashboard for real-time visibility into pricing and availability.
+
+You can confidently say:
+> *“I treated this like a production data pipeline — scraping was only the ingestion layer.”*
+
+---
+
+## 🧠 High‑Level Architecture
+
+```mermaid
+graph TD
+    A[Zepto Platform] -->|Async Scrape| B[Ingestion Layer]
+    B -->|Raw Data| C[Normalization & Validation]
+    C -->|Clean CSV| D[Data Storage]
+    D -->|Upload| E[Supabase DB / Warehouse]
+    E -->|Read| F[Streamlit Analytics Dashboard]
+```
+
+**Key idea:** Scraping is **decoupled** from storage and analytics.
+
+---
+
+## 📂 Repository Structure
+
+The project follows a modular, production-grade structure:
 
 ```text
+zepto-scraper-pipeline/
 ├── src/
 │   ├── scrapers/          # Core scraping logic (ZeptoScraper)
 │   ├── dashboard/         # Streamlit analytics dashboard
-│   ├── database.py        # Database connection layer
-│   └── schema.sql         # Database schema
-├── scripts/               # Entry points for running scrapers
+│   └── database.py        # Database connection layer
+├── scripts/               # Runnable entry points
 │   ├── run_zepto.py       # Single instance runner
-│   ├── run_parallel.py    # Parallel execution script
+│   ├── run_zepto_assortment_parallel.py # Parallel batch ingestion
 │   └── ...
 ├── data/
 │   ├── input/             # Pincode lists and config files
 │   └── output/            # Scraped CSVs and performance reports
-└── docs/                  # Documentation
+└── docs/                  # Project documentation
 ```
 
-## Setup
+---
 
-1. **Clone the repository**
-   ```bash
-   git clone <repo_url>
-   cd scraper_zepto
-   ```
+## ⚙️ Tech Stack
 
-2. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   playwright install
-   ```
+| Layer | Technology |
+|-----|-----------|
+| **Language** | Python 3.10+ |
+| **Ingestion** | Playwright (Async) |
+| **Orchestration** | Python Asyncio |
+| **Storage** | CSV (Intermediate), Supabase (PostgreSQL) |
+| **Visualization** | Streamlit |
+| **Version Control** | Git + GitHub |
 
-3. **Configuration**
-   - Copy `.env.example` to `.env` and fill in your Supabase credentials.
-   ```bash
-   cp .env.example .env
-   ```
+---
 
-4. **Prepare Data**
-   - Place your pincode list (Excel file) in `data/input/`.
+## ▶️ Setup & Usage
 
-## Usage
+### 1. Installation
+```bash
+git clone <repo_url>
+cd scraper_zepto
+pip install -r requirements.txt
+playwright install
+```
 
-### Running the Scraper
-To run the scraper for multiple pincodes in parallel:
+### 2. Configuration
+Copy `.env.example` to `.env` and configure your credentials.
+```bash
+cp .env.example .env
+```
+
+### 3. Running the Pipeline
+**Bulk Ingestion (Parallel):**
 ```bash
 python scripts/run_zepto_assortment_parallel.py
 ```
-Outputs will be saved to `data/output/`.
+*Reads pincodes from `data/input/pin_codes.xlsx` and saves results to `data/output/`.*
 
-### Running the Dashboard
-To view the analytics dashboard:
+### 4. Running the Dashboard
 ```bash
 streamlit run src/dashboard/app_zepto.py
 ```
 
-## Tech Stack
-- **Python 3.10+**
-- **Playwright** (Browser Automation)
-- **Pandas** (Data Processing)
-- **Supabase** (PostgreSQL Database)
-- **Streamlit** (UI/Dashboard)
+---
 
-## License
-[MIT](LICENSE)
+## 📌 Resume‑Ready Highlights
+
+- **Built a production‑style data ingestion pipeline** handling thousands of SKUs.
+- **Designed modular architecture** separating ingestion, processing, and visualization.
+- **Implemented rigorous error handling** with retries, logging, and performance metrics.
+- **Created real-time analytics** to visualize assortment gaps and pricing trends.
+
+---
+
+## 👤 Author
+
+**Ajitvir Singh**  
+Data Engineering | Analytics | Systems Thinking
