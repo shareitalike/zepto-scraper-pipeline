@@ -18,9 +18,6 @@ This project demonstrates **real‑world data engineering skills**, not just scr
 - **Analytics Ready:** Extracts products, prices, inventory, and delivery ETAs, normalizing them for downstream BI.
 - **Dashboarding:** Integrated Streamlit dashboard for real-time visibility into pricing and availability.
 
-You can confidently say:
-> *“I treated this like a production data pipeline — scraping was only the ingestion layer.”*
-
 ---
 
 ## 🧠 High‑Level Architecture
