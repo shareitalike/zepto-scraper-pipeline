@@ -1,0 +1,7 @@
+playwright
+pandas
+streamlit
+supabase
+python-dotenv
+openpyxl
+plotly

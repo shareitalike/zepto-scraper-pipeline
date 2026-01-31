@@ -1,0 +1,42 @@
+from typing import TypedDict, Optional, List
+
+class ProductItem(TypedDict):
+    platform: str
+    category: str
+    subcategory: str
+    clicked_label: str
+    name: str
+    brand: str
+    base_product_id: str
+    product_id: str
+    group_id: Optional[str]
+    merchant_type: Optional[str]
+    mrp: float
+    price: float
+    weight: str
+    shelf_life_in_hours: Optional[int]
+    eta: str
+    availability: str
+    inventory: Optional[int]
+    store_id: str
+    product_url: str
+    image_url: str
+    scraped_at: str
+    pincode_input: str
+
+class AvailabilityResult(TypedDict):
+    input_pincode: str
+    url: str
+    platform: str
+    name: str
+    price: float
+    mrp: float
+    availability: str
+    seller_details: Optional[str]
+    manufacturer_details: Optional[str]
+    marketer_details: Optional[str]
+    variant_count: Optional[int]
+    variant_in_stock_count: Optional[int]
+    inventory: Optional[int]
+    scraped_at: str
+    error: Optional[str]
